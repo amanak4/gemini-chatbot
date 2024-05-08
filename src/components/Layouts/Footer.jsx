@@ -42,6 +42,7 @@ const location = useLocation();
       <SocialIcons Icons={Icons} />
     </div>
   </footer>}
+  
   </>
   );
 };

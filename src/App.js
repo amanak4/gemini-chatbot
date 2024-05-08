@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, useNavigate, Form} from 'react-router-dom';
 import Navbar from './components/Layouts/Navbar';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
@@ -10,6 +10,10 @@ import { useContext, useEffect } from 'react';
 import { Context } from '.';
 import toast,{Toaster} from 'react-hot-toast';
 import axios from 'axios';
+import Diagnosis from "./components/Diagnosis/Diagnosis"
+import HeartDiseaseForm from './components/Form/Heart_disease.jsx';
+import DiabetesForm from './components/Form/Diabetes.jsx';
+import DiabeticRetinopathyForm from './components/Form/Image-Part/Diabeticretinopathy.jsx';
 function App() {
 
   const {isAuthorized,setIsAuthorized,user,setUser}=useContext(Context);
@@ -46,6 +50,10 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Register />} />
+      <Route path='/diagnosis' element={<Diagnosis />} />
+      <Route path='/diabetes' element={<DiabetesForm />} />
+      <Route path='/heart-disease' element={<HeartDiseaseForm />} />
+      <Route path='/diabetic-retinopathy' element={<DiabeticRetinopathyForm />} />
    <Route path='*' element={<NotFound />} />
     </Routes>
     <Footer />
