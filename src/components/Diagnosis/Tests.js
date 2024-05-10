@@ -1,63 +1,75 @@
-import img1 from '../../assests/img1.webp';
+
+import xray from '../../assests/Xray.jpg';
+import diaret from '../../assests/diabeticretinopathy.avif';
+import retina from '../../assests/retina.jpg';
+import diabetes from '../../assests/diabetes.webp';
+import brain from '../../assests/brainstroke.jpg';
+import blood from '../../assests/bloodtest.avif';
+import cardio from '../../assests/cardio.jpg';
+import liver from '../../assests/Liver.jpg';
+import kidney from '../../assests/kidneystone.jpg';
 export const tests = [
   {
     id: 1,
-    img:img1,
+    img:xray,
     name: 'X-ray',
     path:'/X-ray',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    description: 'Uses electromagnetic radiation to produce images of the inside of the body, helping to diagnose various conditions, injuries, or diseases.'
   },
   {
     id: 2,
-    img:img1,
+    img:diaret,
     name: 'Diabetic Retinopathy',
     path:'/diabetic-retinopathy',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    description: 'Comprehensive eye exam, including dilation, fundus photography, optical coherence tomography (OCT), and fluorescein angiography.'
   },
   {
     id: 3,
-    img:img1,
-    name: 'Retina Scan',
-    path:'/Retina-Scan',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    img:retina,
+    name: 'Heart Disease',
+    path:'/heart-disease',
+    description: 'Non-invasive diagnostic procedure that uses light to capture detailed images of the retina to detect and monitor various eye conditions.'
   },
   {
     id: 4,
-    img:img1,
+    img:diabetes,
     name: 'Diabetes',
     path:'/diabetes',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    description: 'Evaluates blood glucose levels to diagnose diabetes or monitor blood sugar control, helping in early detection and management of the condition.'
   },
   {
     id: 5,
-    img:img1,
-    name: 'Blood Pressure',
-    path:'/Blood-Pressure',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    img:brain,
+    name: 'Brain Stroke',
+    path:'/brainStroke',
+    description: 'Assesses brain function and circulation for prompt diagnosis and treatment of strokes, critical for preventing long-term brain damage and disability.'
   },
   {
     id: 6,
-    img:img1,
-    name: 'Heart Disease',
-    path:'/heart-disease',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    img:blood,
+    name: 'Blood Test',
+    path:'/bloodTest',
+    description: 'Health insights by analyzing blood components like cells and biochemical markers, aiding in disease diagnosis and treatment monitoring'
   },
   {
     id: 7,
-    img:img1,
-    name: 'X-ray',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    img:cardio,
+    name: 'CardioDisease',
+    path:'/cardioDisease',
+    description: 'Cardiovascular disease tests assess heart health, detecting conditions like heart disease and stroke risk factors through various diagnostic methods.'
   },
   {
     id: 8,
-    img:img1,
-    name: 'X-ray',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    img:liver,
+    name: 'LiverDisease',
+    path:'/liverDisease',
+    description: 'Detects liver damage or disorders using blood tests, imaging studies, and sometimes liver biopsy for a compr assessment.'
   },
   {
     id: 9,
-    img:img1,
-    name: 'X-ray',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    img:kidney,
+    name: 'Kidney Stone ',
+    path:'/kidneyStone',
+    description: 'Diagnoses the presence of kidney stones through imaging techniques like CT scans, ultrasound, or X-rays, along with urine and blood tests to analyze mineral levels and kidney function.'
   },
 ];
