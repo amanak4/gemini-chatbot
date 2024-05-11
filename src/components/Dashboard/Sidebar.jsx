@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench } from 'lucide-react'
 import { FaHome } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../../Base_url'
 import { Context } from '../..'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 export default function SidebarOne() {
  const {isAuthorized,setIsAuthorized,user,setUser}=useContext(Context);
-
+const navigateTo = useNavigate();
     const handleLogout = async () => {
         try {
            
@@ -17,6 +17,7 @@ export default function SidebarOne() {
           toast.success(response.data.message);
           setIsAuthorized(false);
           setUser(null);
+    navigateTo('/');
           // Redirect or perform any other action after successful logout
         } catch (error) {
           console.error(error.response.data);
