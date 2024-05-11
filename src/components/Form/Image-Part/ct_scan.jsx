@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { MLBASE_URL } from "../../../Base_url";
-const CataractForm = () => {
+const Ct_scan_form = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [responseMessage, setResponseMessage] = useState("");
 const [loading,setLoading] = useState(false);
@@ -67,4 +67,4 @@ const [loading,setLoading] = useState(false);
   );
 };
 
-export default CataractForm;
+export default Ct_scan_form;

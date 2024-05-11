@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { MLBASE_URL } from "../../../Base_url";
-const CataractForm = () => {
+const SkinDiseaseForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [responseMessage, setResponseMessage] = useState("");
 const [loading,setLoading] = useState(false);
@@ -17,7 +17,7 @@ const [loading,setLoading] = useState(false);
 
     try {
       const response = await axios.post(
-        `${MLBASE_URL}/predict_cataract`,
+        `${MLBASE_URL}/predict_heart_disease`,
         formData,
         { withCredentials: true,
           headers: {
@@ -35,7 +35,7 @@ const [loading,setLoading] = useState(false);
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
     <div className="max-w-md mx-auto bg-white p-8 rounded shadow-md w-full">
-      <h1 className="text-2xl font-bold mb-4">Cataract Disease Prediction</h1>
+      <h1 className="text-2xl font-bold mb-4">Skin Disease Prediction</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block mb-1 font-semibold">Upload Image</label>
@@ -67,4 +67,4 @@ const [loading,setLoading] = useState(false);
   );
 };
 
-export default CataractForm;
+export default SkinDiseaseForm;

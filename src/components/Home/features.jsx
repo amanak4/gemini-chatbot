@@ -1,41 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import feat2 from '../../assests/feat2.webp';
+import feat1 from '../../assests/feat1.jpg';
+import feat3 from '../../assests/feat3.ashx';
+import feat4 from '../../assests/feat4.jpeg';
+import feat5 from '../../assests/feat5.jpg';
+import feat6 from '../../assests/feat6.jpg';
 import img1 from '../../assests/img1.webp';
 import { motion } from 'framer-motion';
 import './home.css'
 function Features() {
 
-const features=[
-    {   id:1,
-        img:img1,
-        title:"Free Consultation",
-        description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
-    },
-    {  id:2,
-        img:img1,
-        title:"Free Consultation",
-        description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
-    },
-    {  id:3,
-        img:img1,
-        title:"Free Consultation",
-        description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
-    },
-    {id:4,
-        img:img1,
-        title:"Free Consultation",
-        description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
-    },
-    {id:5,
-        img:img1,
-        title:"Free Consultation",
-        description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
-    },
-    {id:6,
-        img:img1,
-        title:"Free Consultation",
-        description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
-    }
-]
+// const features=[
+//     {   id:1,
+//         img:img1,
+//         title:"Free Consultation",
+//         description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
+//     },
+//     {  id:2,
+//         img:img1,
+//         title:"Free Consultation",
+//         description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
+//     },
+//     {  id:3,
+//         img:img1,
+//         title:"Free Consultation",
+//         description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
+//     },
+//     {id:4,
+//         img:img1,
+//         title:"Free Consultation",
+//         description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
+//     },
+//     {id:5,
+//         img:img1,
+//         title:"Free Consultation",
+//         description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
+//     },
+//     {id:6,
+//         img:img1,
+//         title:"Free Consultation",
+//         description:"loreed hdsu sgsys isu hs sudgdsns uesjshss hws h sioshd s csihc z  zsgb c szsbs bz ",
+//     }
+// ]
 
     const [isVisible, setIsVisible] = useState(false);
 
@@ -74,21 +80,13 @@ const features=[
                     transition={{ delay: 0.1, duration: 1.1 }}
                     
                     className='border-2 flex-col text-center  p-6 pb-8 rounded-lg shadow-custom bg-white animate-on-scroll'>
-                    <img src={img1} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center' />
+                    <img src={feat1} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center object-cover' />
                     <div>
-                        <h1 className='text-2xl mb-4 font-semibold'>Munna</h1>
+                        <h1 className='text-2xl mb-4 font-semibold'>Interactive Engagement
+</h1>
                         <p>
                            
-                        lorem ipsum
-                            jiej jshh lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            
+                        User-friendly health app predicts diseases, offers personalized advice via chatbots, enhancing engagement and interaction for users.
                         </p>
                     </div>
                 </motion.div>
@@ -97,19 +95,12 @@ const features=[
                     animate={isVisible ? { y: 0 } : { y: '100vh' }}
                     transition={{ delay: 0.1, duration: 1.1 }}
                     className='border-2 flex-col  bg-white  shadow-custom text-center p-6 pb-8 rounded-lg shadow-md animate-on-scroll'>
-                    <img src={img1} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center' />
+                    <img src={feat2} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center object-cover' />
                     <div>
-                        <h1 className='text-2xl mb-4 font-semibold'>Munna</h1>
+                        <h1 className='text-2xl mb-4 font-semibold'>Intelligent Integration
+</h1>
                         <p>
-                            lorem ipsum
-                            jiej jshh lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
+                        AI-driven analysis of user data forecasts diseases, empowering proactive wellness interventions with tailored recommendations.
                         </p>
                     </div>
                 </motion.div>
@@ -119,19 +110,12 @@ const features=[
                     animate={isVisible ? { x: 0 } : { x: '100vw' }}
                     transition={{ delay: 0.1, duration: 1.1}}
                     className='border-2 flex-col  bg-white  shadow-custom text-center p-6 pb-8 rounded-lg shadow-md animate-on-scroll'>
-                    <img src={img1} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center' />
+                    <img src={feat3} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center object-cover' />
                     <div>
-                        <h1 className='text-2xl mb-4 font-semibold'>Munna</h1>
+                        <h1 className='text-2xl mb-4 font-semibold'>Smooth Health Journey
+</h1>
                         <p>
-                            lorem ipsum
-                            jiej jshh lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
+                        User-friendly interface simplifies health assessment, minimizing appointments and wait times, ensuring swift healthcare access.
                         </p>
                     </div>
                 </motion.div>
@@ -141,19 +125,12 @@ const features=[
                     animate={isVisible ? { x: 0 ,opacity:1} : { x: '-100vw',opacity:0 }}
                     transition={{ delay: 0.1, duration: 1.1 }}
                     className='border-2 flex-col  bg-white  shadow-custom text-center p-6 pb-8 rounded-lg shadow-md animate-on-scroll'>
-                    <img src={img1} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center' />
+                    <img src={feat4} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center object-cover' />
                     <div>
-                        <h1 className='text-2xl mb-4 font-semibold'>Munna</h1>
+                        <h1 className='text-2xl mb-4 font-semibold'>Imaging Insights
+</h1>
                         <p>
-                            lorem ipsum
-                            jiej jshh lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
+                        Offer users the ability to upload and analyze X-rays, MRIs, CT scans , Retinography, enriching diagnostic accuracy and depth.
                         </p>
                     </div>
                 </motion.div>
@@ -163,19 +140,12 @@ const features=[
                     animate={isVisible ? { y: 0 } : { y: '100vh' }}
                     transition={{ delay: 0.1, duration: 1.1 }}
                     className='border-2 flex-col  bg-white  shadow-custom text-center p-6 pb-8 rounded-lg shadow-md animate-on-scroll'>
-                    <img src={img1} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center' />
+                    <img src={feat5} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center object-cover' />
                     <div>
-                        <h1 className='text-2xl mb-4 font-semibold'>Munna</h1>
+                        <h1 className='text-2xl mb-4 font-semibold'>Confidentiality Shield
+</h1>
                         <p>
-                            lorem ipsum
-                            jiej jshh lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
+                        Utilizing encryption, access control, and compliance measures to safeguard sensitive health data, ensuring privacy integrity.
                         </p>
                     </div>
                 </motion.div>
@@ -185,19 +155,12 @@ const features=[
                     animate={isVisible ? { x: 0 } : { x: '100vw' }}
                     transition={{ delay: 0.1, duration: 1.1}}
                     className='border-2 flex-col  bg-white  shadow-custom text-center p-6 pb-8 rounded-lg shadow-md animate-on-scroll'>
-                    <img src={img1} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center' />
+                    <img src={feat6} alt='munna' className='w-40 h-40 border-2 border-gray-500 rounded-full mx-auto my-4 flex justify-center object-cover' />
                     <div>
-                        <h1 className='text-2xl mb-4 font-semibold'>Munna</h1>
+                        <h1 className='text-2xl mb-4 font-semibold'>Adaptive Refinement
+</h1>
                         <p>
-                            lorem ipsum
-                            jiej jshh lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
-                            lorem ipsum
-                            jiej jshh
+                        Enhance platform based on user feedback and medical tech advancements, optimizing diagnosis quality and effectiveness
                         </p>
                     </div>
                 </motion.div>

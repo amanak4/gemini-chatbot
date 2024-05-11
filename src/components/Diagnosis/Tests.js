@@ -12,8 +12,8 @@ export const tests = [
   {
     id: 1,
     img:xray,
-    name: 'X-ray',
-    path:'/X-ray',
+    name: 'Skin Disease',
+    path:'/skin-disease',
     description: 'Uses electromagnetic radiation to produce images of the inside of the body, helping to diagnose various conditions, injuries, or diseases.'
   },
   {
@@ -26,8 +26,8 @@ export const tests = [
   {
     id: 3,
     img:retina,
-    name: 'Heart Disease',
-    path:'/heart-disease',
+    name: 'CT Scan',
+    path:'/ct-scan',
     description: 'Non-invasive diagnostic procedure that uses light to capture detailed images of the retina to detect and monitor various eye conditions.'
   },
   {
@@ -40,8 +40,8 @@ export const tests = [
   {
     id: 5,
     img:brain,
-    name: 'Brain Stroke',
-    path:'/brainStroke',
+    name: 'Cataract Disease',
+    path:'/cataract',
     description: 'Assesses brain function and circulation for prompt diagnosis and treatment of strokes, critical for preventing long-term brain damage and disability.'
   },
   {
@@ -70,6 +70,13 @@ export const tests = [
     img:kidney,
     name: 'Kidney Stone ',
     path:'/kidneyStone',
-    description: 'Diagnoses the presence of kidney stones through imaging techniques like CT scans, ultrasound, or X-rays, along with urine and blood tests to analyze mineral levels and kidney function.'
+    description: 'Diagnoses the presence of kidney stones through  urine and blood tests to analyze mineral levels and kidney function.'
   },
+  {
+    id:10,
+    img:liver,
+    name:'Heart Disease',
+    path:'/heart-disease',
+    description:'Detects the presence of heart disease using blood tests, imaging studies, and sometimes heart biopsy for a comprehensive assessment.'
+  }
 ];

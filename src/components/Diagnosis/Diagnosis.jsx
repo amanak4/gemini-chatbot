@@ -16,8 +16,10 @@ function Diagnosis() {
   const filterRobots = tests.filter(robot=>{return robot.name.toLowerCase().includes(searchfield.toLowerCase())})
   return (
     <div className='mt-20'>
-      <h1 className='text-center text-3xl font-bold'>Diagnosis</h1>
+     
+     <h1 className='text-center text-3xl lg:text-5xl font-bold'>Diagnosis</h1>
        <SearchBox searchChange={onSearchChange}/>
+     
       <br/>
      <CardList tests={filterRobots}/> 
     </div>

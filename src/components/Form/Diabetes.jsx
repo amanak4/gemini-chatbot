@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-
+import { MLBASE_URL } from '../../Base_url';
+import { useNavigate } from 'react-router-dom';
 const Form = () => {
   const [formData, setFormData] = useState({
     Pregnancies: '',
@@ -33,12 +34,12 @@ const Form = () => {
     "DiabetesPedigreeFunction": parseFloat(formData.DiabetesPedigreeFunction),
     "Age": parseInt(formData.Age)
   }];
-  
+  const navigateTo = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://127.0.0.1:5000/predict2', munnadata, {
+      const response = await axios.post(`${MLBASE_URL}/predict2`, munnadata, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
@@ -46,6 +47,7 @@ const Form = () => {
       });
       console.log(response.data);
       setLoading(false);
+      navigateTo(`/diabetes-results/${response.data.prediction[0]}`);
       setPrediction(response.data.prediction);
       toast.success(response.data.prediction);
     } catch (error) {
@@ -54,48 +56,38 @@ const Form = () => {
   };
 
   return (
-    <div className="mt-16 max-w-md mx-auto p-6 bg-gray-100 rounded-md shadow-md">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Input fields for each feature */}
-        {/* Example for 'Pregnancies' */}
-        <div>
-          <label className="block mb-1" htmlFor="pregnancies">Pregnancies:</label>
-          <input type="number" name="Pregnancies" id="pregnancies" value={formData.Pregnancies} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+    <div className="container mx-auto mt-20">
+      <h1 className="text-3xl font-bold text-center mb-8">Diabetes Prediction</h1>
+      <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Object.entries(formData).map(([key, value]) => (
+            <div key={key} className="border border-gray-300 rounded p-2">
+                <>
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor={key}>
+                    {key}
+                  </label>
+                  <input
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-black"
+                    id={key}
+                    name={key}
+                    type="text"
+                    value={value}
+                    onChange={handleChange}
+                  />
+                </>
+              
+            </div>
+          ))}
         </div>
-        <div>
-          <label className="block mb-1" htmlFor="glucose">Glucose:</label>
-          <input type="number" name="Glucose" id="glucose" value={formData.Glucose} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+        <div className="flex items-center justify-center">
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
+            type="submit"
+          >
+            {loading ? <span>Loading...</span> : <span>Predict</span>}
+          </button>
         </div>
-        <div>
-          <label className="block mb-1" htmlFor="bloodPressure">Blood Pressure:</label>
-          <input type="number" name="BloodPressure" id="bloodPressure" value={formData.BloodPressure} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block mb-1" htmlFor="skinThickness">Skin Thickness:</label>
-          <input type="number" name="SkinThickness" id="skinThickness" value={formData.SkinThickness} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block mb-1" htmlFor="insulin">Insulin:</label>
-          <input type="number" name="Insulin" id="insulin" value={formData.Insulin} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block mb-1" htmlFor="bmi">BMI:</label>
-          <input type="number" name="BMI" id="bmi" value={formData.BMI} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block mb-1" htmlFor="diabetesPedigreeFunction">Diabetes Pedigree Function:</label>
-          <input type="number" name="DiabetesPedigreeFunction" id="diabetesPedigreeFunction" value={formData.DiabetesPedigreeFunction} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-        <div>
-          <label className="block mb-1" htmlFor="age">Age:</label>
-          <input type="number" name="Age" id="age" value={formData.Age} onChange={handleChange} className="w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-        </div>
-        {/* Button for submitting form */}
-        <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">{loading ? <span>Loading....</span> : <span>Submit</span>}</button>
       </form>
-      
-      {/* Display prediction */}
-      {prediction && <p className="mt-4">Prediction: {prediction}</p>}
     </div>
   );
 };

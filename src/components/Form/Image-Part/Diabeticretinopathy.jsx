@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { MLBASE_URL } from "../../../Base_url";
 const DiabeticRetinopathyForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [responseMessage, setResponseMessage] = useState("");
@@ -17,7 +17,7 @@ const [loading,setLoading] = useState(false);
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/predict_diabetic_retinopathy",
+        `${MLBASE_URL}/predict_diabetic_retinopathy`,
         formData,
         { withCredentials: true,
           headers: {
@@ -33,73 +33,37 @@ const [loading,setLoading] = useState(false);
   };
 
   return (
-    <div className="container mx-auto mt-20">
-    <h1 className="text-center text-3xl font-bold">Diabetic Retinopathy</h1>
-      <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
+    <div className="max-w-md mx-auto bg-white p-8 rounded shadow-md w-full">
+      <h1 className="text-2xl font-bold mb-4">Diabetic Retinopathy Prediction</h1>
+      <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label
-            htmlFor="file"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Upload Image
-          </label>
-          <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-            <div className="space-y-1 text-center">
-              <svg
-                className="mx-auto h-12 w-12 text-gray-400"
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 48 48"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M8 15v20a2 2 0 002 2h28a2 2 0 002-2V15"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 27l5-5m0 0l5 5m-5-5v9"
-                />
-              </svg>
-              <div className="flex text-sm text-gray-600">
-                <label
-                  htmlFor="file"
-                  className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
-                >
-                  <span>Upload a file</span>
-                  <input
-                    id="file"
-                    name="file"
-                    type="file"
-                    className="sr-only"
-                    onChange={handleFileChange}
-                  />
-                </label>
-              </div>
-              <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-            </div>
-          </div>
+          <label className="block mb-1 font-semibold">Upload Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 px-3 py-2"
+          />
         </div>
-        <div className="flex items-center justify-center">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            {loading?<span>Loading...</span>:<span>Predict</span>}
-          </button>
-        </div>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200" type="submit">
+          {loading ? <span>Loading...</span> : <span>Predict</span>}
+        </button>
       </form>
+      {selectedFile && (
+        <div className="mt-4">
+          <p className="font-semibold">Selected Image:</p>
+          <img src={URL.createObjectURL(selectedFile)} alt="Selected" className="mt-2 w-full" />
+        </div>
+      )}
       {responseMessage && (
-        <div className="mt-8 text-center">
-          <h2 className="text-lg font-bold">Prediction Result:</h2>
-          <p className="mt-2">{responseMessage}</p>
+        <div className="mt-4">
+          <p className="font-semibold">Prediction Result:</p>
+          <p>{responseMessage}</p>
         </div>
       )}
     </div>
+  </div>
   );
 };
 
