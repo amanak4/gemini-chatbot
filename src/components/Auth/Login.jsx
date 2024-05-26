@@ -91,9 +91,9 @@ const navigateTo = useNavigate();
           <form onSubmit={handleSubmit2}>
             <h1>Create Account</h1>
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" name="name" onChange={handleChange} />
-            <input type="email" placeholder="Email" name="email" onChange={handleChange} />
-            <input type="password" placeholder="Password" name="password" onChange={handleChange} />
+            <input type="text" placeholder="Name" name="name"  required  onChange={handleChange} />
+            <input type="email" placeholder="Email" name="email" required  onChange={handleChange} />
+            <input type="password" placeholder="Password" name="password" required  onChange={handleChange} />
             <button type='submit'>Sign Up</button>
           </form>
         </div>
@@ -101,8 +101,8 @@ const navigateTo = useNavigate();
           <form onSubmit={handleSubmit}>
             <h1>Sign In</h1>
             <span>or use your email password</span>
-            <input type="email" placeholder="Email" name="email" onChange={handleChange2} />
-            <input type="password" placeholder="Password" name="password" onChange={handleChange2} />
+            <input type="email" placeholder="Email" name="email" required  onChange={handleChange2} />
+            <input type="password" placeholder="Password" name="password"  required onChange={handleChange2} />
             <Link to={'/forgotPassword'}>Forget Your Password?</Link>
             <button type='submit'>Sign In</button>
           </form>
