@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from './Card';
+import { Context } from '../..';
 
 const CardList = ({ tests }) => {
+  const {user, setUser,isAuthorized,setIsAuthorized}=useContext(Context);
   return (
-    <div className='flex flex-wrap justify-evenly gap-y-5  mx-7'>
+    <div className='flex flex-wrap justify-start gap-x-8 gap-y-5 lg:gap-x-12  gap-y-5  mx-7 ml-11'>
       {tests.map((user, i) => (
         <Card 
           key={i} 

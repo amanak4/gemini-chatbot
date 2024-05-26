@@ -3,10 +3,12 @@ import {BrowserRouter as Router, Routes, Route, useNavigate, Form, useLocation} 
 import Navbar from './components/Layouts/Navbar';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
+import ForgotPassword from './components/Auth/ForgotPassword.jsx';
+import ChangePassword from './components/Auth/ChangePassword.jsx';
 import Footer from './components/Layouts/Footer';
 import Home from './components/Home/Home';
 import NotFound from './components/NotFound/NotFound';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Context } from '.';
 import toast,{Toaster} from 'react-hot-toast';
 import axios from 'axios';
@@ -29,45 +31,56 @@ import Cardio_disease_Results from './components/Results/CardioDiseaseResults.js
 import DiabetesResults from './components/Results/DiabetesResults.jsx';
 import KidneyStoneResults from './components/Results/KidneyStoneResults.jsx';
 import UserProfile from './components/Dashboard/Dashboard.jsx';
+import LiverDiseaseResult from './components/Results/LiverDiseaseResult.jsx';
+import CataractResult from './components/Results/Img-result/CataractResult.jsx';
+import CTScanResult from './components/Results/Img-result/CT_scanResult.jsx';
+import DiabeticRetinopathyResult from './components/Results/Img-result/DiabeticretinopathyResult.jsx';
+import SkinDiseaseResult from './components/Results/Img-result/SkinDiseaseResult.jsx';
+import RecommendationPage from './components/RecommendationPage/RecommendPage.jsx';
+import { AnimatePresence } from 'framer-motion';
+import AnimatePage from './components/AnimatePage/animatePage.jsx';
 function App() {
 
   const {isAuthorized,setIsAuthorized,user,setUser}=useContext(Context);
+const [showAnimate,setShowAnimate]=useState(false);
+  const location = useLocation();
+  // const location = window.location;
+  // const getUser = async () => {
+  //   try {
+  //     if(location.pathname==='/medibuddy'){
+  //       return;
+  //     }
+  //     const response = await axios.get(`${BASE_URL}/getuser`,{withCredentials:true});
+  //     console.log("app response",response);
+  //     setUser(response.data.user);
+  //     setIsAuthorized(true);
+  //     toast.success(response.data.message);
 
-
-  const location = window.location;
-  const getUser = async () => {
-    try {
-      if(location.pathname==='/medibuddy'){
-        return;
-      }
-      const response = await axios.get(`${BASE_URL}/getuser`,{withCredentials:true});
-      console.log("app response",response);
-      setUser(response.data.user);
-      setIsAuthorized(true);
-      toast.success(response.data.message);
-     
-    } catch (error) {
-      toast.success(error.response.data.message);
-      setIsAuthorized(false);
-      console.error('Error fetching user data:', error);
-
-    }
-  };
+  //   } catch (error) {
+  //     toast.success(error.response.data.message);
+  //     setIsAuthorized(false);
+  //     console.error('Error fetching user data:', error);
+  //   }
+  // };
+ 
+  // useEffect(() => {
+  //   getUser();
+  // }, [isAuthorized]);
   
-  useEffect(() => {
-    getUser();
-  }, [isAuthorized]);
-
   console.log("auth->",isAuthorized);
   console.log("user->",user);
   return (
    <>
-   <Router>
+   <>
     <Navbar />
-    <Routes>
+    {/* <AnimatePage showAnimate={showAnimate} setShowAnimate={setShowAnimate} /> */}
+    <AnimatePresence mode='wait' onExitComplete={() => setShowAnimate(false)}>
+    <Routes location={location} key={location.key}>
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Register />} />
+      <Route path='/forgotPassword' element={<ForgotPassword />} />
+      <Route path='/changePassword' element={<ChangePassword />} />
       <Route path='/diagnosis' element={<Diagnosis />} />
       <Route path='/diabetes' element={<DiabetesForm />} />
       <Route path='/heart-disease' element={<HeartDiseaseForm />} />
@@ -84,13 +97,20 @@ function App() {
      <Route path='/cardio-disease-results/:id' element={<Cardio_disease_Results />} />
      <Route path='/diabetes-results/:id' element={<DiabetesResults />} />
      <Route path='/kidney-stone-results/:id' element={<KidneyStoneResults />} />
+     <Route path='/liver-disease-results/:id' element={<LiverDiseaseResult />} />
+     <Route path='/cataract-results/:id' element={<CataractResult />} />
+     <Route path='/ct-scan-results/:id' element={<CTScanResult setShowAnimate={setShowAnimate} />} />
+     <Route path='/diabetic-retinopathy-results/:id' element={<DiabeticRetinopathyResult />} />
+     <Route path='/skin-disease-results/:id' element={<SkinDiseaseResult />} />
       <Route path='/medibuddy' element={<Medibuddy />} />
+      <Route path='/medicines' element={<RecommendationPage />} />
       <Route path='/user-profile' element={<UserProfile />} />
    <Route path='*' element={<NotFound />} />
     </Routes>
+    </AnimatePresence>
     <Footer />
     <Toaster />
-   </Router>
+   </>
    </>
   );
 }

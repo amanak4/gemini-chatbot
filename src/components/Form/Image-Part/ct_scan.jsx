@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { MLBASE_URL } from "../../../Base_url";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../..";
+import toast from "react-hot-toast";
 const Ct_scan_form = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [responseMessage, setResponseMessage] = useState("");
 const [loading,setLoading] = useState(false);
+const {isAuthorized,setIsAuthorized}=useContext(Context);
+
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
-
+const navigateTo = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!selectedFile) {
+      toast.error("Please select an image.");
+      return ;
+    }
+    if(!isAuthorized){
+      toast.error("The page has not been integrated with the machine learning model yet.");
+      return ;
+      // navigateTo("/login");
+    }
     setLoading(true);
     const formData = new FormData();
     formData.append("file", selectedFile);
@@ -27,6 +41,7 @@ const [loading,setLoading] = useState(false);
       );
       setLoading(false);
       setResponseMessage(response.data.prediction);
+      navigateTo(`/ct-scan-results/${response.data.prediction}`);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -35,7 +50,7 @@ const [loading,setLoading] = useState(false);
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
     <div className="max-w-md mx-auto bg-white p-8 rounded shadow-md w-full">
-      <h1 className="text-2xl font-bold mb-4">Cataract Disease Prediction</h1>
+      <h1 className="text-2xl font-bold mb-4">CT Scan Disease Prediction</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block mb-1 font-semibold">Upload Image</label>

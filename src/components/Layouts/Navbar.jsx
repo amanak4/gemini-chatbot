@@ -5,8 +5,11 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Context } from '../..';
 import NavLinks from './NavLinks';
 import axios from 'axios';
+import logo from '../../assests/mainlogo.png';
 import toast from 'react-hot-toast';
 import { BASE_URL } from '../../Base_url';
+import { FaAngleDown } from 'react-icons/fa';
+import {motion} from 'framer-motion';
 function Navbar() {
     const navigateTo=useNavigate();
     const [seeProfile,setSeeProfile]=useState(false);
@@ -16,16 +19,20 @@ function Navbar() {
     let Links =[
         {name:"Home",link:"/"},
         {name:"Diagnosis",link:"/diagnosis"},
-        {name:"Planner",link:"/planner"},
-        {name:"",link:"/contact"},
+        {name:"Medicines",link:"/medicines"},
       ];
       let [open, setOpen] =useState(false);
   let username
   if(isAuthorized){
-  username = user.name.toUpperCase()[0];
+  username = user.name[0].toUpperCase();
   }
 
   const handleLogout = async () => {
+    if(!isAuthorized){
+      toast.error("The page is not yet connected to the backend. Please navigate to the homepage by changing the URL path.");
+      return ;
+      // navigateTo("/login");
+    }
     try {
         setOpen(false);
       const response = await axios.get(`${BASE_URL}/logout`,{withCredentials:true});
@@ -42,13 +49,14 @@ function Navbar() {
 
   return (
     <>
-    {location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/medibuddy' || location.pathname === '/user-profile' ?<></>:
+    {location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/medibuddy' || location.pathname === '/user-profile' || location.pathname === '/changePassword' ||
+    location.pathname === '/forgotPassword' ?<></>:
     <div className='bg-white shadow-md w-full h-auto fixed top-0 left-0 z-10'>
         <div className='shadow-md w-full fixed top-0 left-0 z-10 bg-white'>
            <div className='md:flex items-center justify-between py-4 md:px-10 px-7 bg-white'>
             {/* logo section */}
             <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
-               <Link to={'/'} className='flex items-center'> <BookOpenIcon className='w-7 h-7 text-blue-600'/>
+               <Link to={'/'} className='flex items-center'> <img src={logo} className='w-7 h-7 text-blue-600'/>
                 <span>IntelliDoc</span>
                 </Link>
             </div>
@@ -69,10 +77,12 @@ function Navbar() {
                     ))
                 }
                {!isAuthorized? <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static' onClick={()=>navigateTo('/login')}>Get Started</button>:
-                <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static rounded-full' onClick={()=>setSeeProfile(!seeProfile)}>{username}</button>
+               <button className='btn bg-blue-600 text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static rounded-full flex items-center justify-between'  onClick={()=>setSeeProfile(!seeProfile)}>  <span >  {username}</span> <FaAngleDown /></button>
                }
 
-               {seeProfile&&isAuthorized?<ul className='text-sm text-start flex-col 
+               {seeProfile&&isAuthorized?<ul initial={{opacity:0}} animate={{opacity:1}}
+               transition={{duration:0.5}}
+                className='text-sm text-start flex-col 
                   line leading-6 block mt-3 lg:top-20 lg:right-0 lg:hidden'>
                <li>
                <Link className= '  text-gray-800 hover:text-blue-600 duration-500 hover:underline font-bold mb-4 text-lg' to='/user-profile' onClick={()=>setOpen(false)}>Profile</Link>

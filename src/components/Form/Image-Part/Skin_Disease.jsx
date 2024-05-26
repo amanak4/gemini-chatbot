@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { MLBASE_URL } from "../../../Base_url";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../..";
+import toast from "react-hot-toast";
 const SkinDiseaseForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [responseMessage, setResponseMessage] = useState("");
 const [loading,setLoading] = useState(false);
+const {isAuthorized,setIsAuthorized}=useContext(Context);
+
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
+  const predictionLabels = {
+    0: 'Ekzama',
+    2: 'Akne',
+    3: 'Pigment',
+    4: 'Benign',
+    5: 'Malignant',
+  };
+
+const navigateTo = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!selectedFile) {
+      toast.error("Please select an image.");
+      return ;
+    }
+    if(!isAuthorized){
+      toast.error("The page has not been integrated with the machine learning model yet.");
+      return ;
+      // navigateTo("/login");
+    }
     setLoading(true);
     const formData = new FormData();
     formData.append("file", selectedFile);
@@ -27,6 +50,7 @@ const [loading,setLoading] = useState(false);
       );
       setLoading(false);
       setResponseMessage(response.data.prediction);
+navigateTo(`/skin-disease-results/${response.data.prediction}`);
     } catch (error) {
       console.error("Error:", error);
     }

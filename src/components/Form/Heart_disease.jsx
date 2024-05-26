@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { MLBASE_URL } from '../../Base_url';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../..';
 
 const HeartDiseaseForm = () => {
   const [formData, setFormData] = useState({
@@ -44,10 +45,17 @@ const HeartDiseaseForm = () => {
     "Number of vessels fluro": parseInt(formData["Number of vessels fluro"]),
     "Thallium": parseInt(formData.Thallium)
   }];
-  
-const navigateTo = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const {isAuthorized,setIsAuthorized}=useContext(Context);
+
+  const navigateTo=useNavigate();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if(!isAuthorized){
+        toast.error("The page has not been integrated with the machine learning model yet.");
+        return ;
+        // navigateTo("/login");
+      navigateTo("/login");
+    }
     setLoading(true);
     try {
       const response = await fetch(`${MLBASE_URL}/predict1`, {

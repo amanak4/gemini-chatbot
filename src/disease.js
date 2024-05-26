@@ -168,3 +168,98 @@ export const kidneyStone = {
     
     description : "Kidney stones, also known as renal calculi, are hard deposits that form in the kidneys when substances in the urine become highly concentrated. These substances can include calcium, oxalate, uric acid, and other minerals and salts. Kidney stones vary in size, from tiny crystals to stones that are several centimeters in diameter, and they can cause severe pain and other complications."
 };
+
+export const liver = {
+    symptoms:{
+        1: "Yellowing of the skin and the whites of the eyes, called jaundice. Yellowing of the skin might be harder to see on Black or brown skin.",
+        2: "Belly pain and swelling.",
+        3: "Constant tiredness.",
+        4: "Dark urine.",
+        5: "Nausea or vomiting."
+    },  
+    precautions:{
+        1: "Maintaining a healthy weight.",
+        2: "Avoiding alcohol, which makes your liver work harder to do its job.",
+        3: "Eating a healthy diet.",
+        4: "Exercising regularly.",
+        5: "Only taking medications that you need and carefully following dosing recommendations"
+    }, 
+    description : "Liver disease encompasses a range of conditions affecting the liver's structure or function, often leading to symptoms like fatigue, jaundice, and abdominal pain. Causes include viral infections, excessive alcohol consumption, autoimmune disorders, and metabolic abnormalities. "
+};
+
+
+export const ct_scan = {
+    symptoms : {
+        1: "A lump or thickening in the breast or underarm area is a common sign of chest cancer.",
+        2: "Chest pain that worsens with deep breathing, coughing, or laughing.",
+        3: "Coughing up blood or rust-colored sputum.",
+        4: "Recurrent respiratory infections, such as bronchitis or pneumonia.",
+        5: "Shortness of breath or wheezing."
+    },
+    
+    precautions : {
+        1: "Smoking is the leading cause of lung cancer. If you smoke, quit smoking as soon as possible.",
+        2: "Reduce exposure to environmental carcinogens such as radon, asbestos, arsenic, and certain industrial chemicals.",
+        3: "Maintain a healthy lifestyle by eating a balanced diet rich in fruits and vegetables, exercising regularly, and maintaining a healthy weight.",
+        4: " Excessive alcohol consumption has been linked to an increased risk of lung cancer.",
+        5: "Regular Health Check-ups for early detection of the disease."
+    },
+    
+    description :"Lung cancer originates in the cells of the lungs and is typically categorized into two main types: non-small cell lung cancer (NSCLC) and small cell lung cancer (SCLC). NSCLC accounts for the majority of lung cancer cases and includes adenocarcinoma, squamous cell carcinoma, and large cell carcinoma. SCLC is less common but tends to grow and spread more rapidly."
+};
+
+export const diabetic_retinopathy = {
+    symptoms : {
+        1: "Blurriness or difficulty focusing, especially affecting central vision.",
+        2: "Dark spots or lines that float in the field of vision, often caused by bleeding in the eye.",
+        3: "Difficulty distinguishing between colors or perceiving colors less vividly.",
+        4: "Progressive loss of vision, especially if diabetic retinopathy is left untreated.",
+        5: "Reduced ability to see in low light conditions."
+    },
+    
+    precautions :{
+        1: "Maintaining stable blood sugar levels is crucial in preventing and managing diabetic retinopathy.",
+        2: "Adopt a healthy lifestyle that includes regular exercise, a balanced diet rich in fruits, vegetables, whole grains, and lean proteins.",
+        3: "Protect your eyes from injury and harmful ultraviolet (UV) rays by wearing sunglasses and safety goggles when necessary.",
+        4: "Exercise can help improve blood circulation, manage blood sugar levels, and reduce the risk of complications associated with diabetes, including diabetic retinopathy.",
+        5: "Be aware of the signs and symptoms of diabetic retinopathy, such as blurred or distorted vision, floaters, dark spots, or difficulty seeing at night. "
+    },
+    
+    description :"Diabetic retinopathy is a complication of diabetes that affects the eyes, particularly the retina, which is the light-sensitive tissue at the back of the eye. It occurs when high levels of blood sugar damage the blood vessels in the retina."
+};
+
+
+export const skin_disease = {
+    symptoms : {
+        1: "Rashes are a common symptom of many skin conditions and can appear as red, inflamed areas of the skin with or without raised bumps, blisters, or scaling.",
+        2: "Itching is a prevalent symptom of skin diseases and can range from mild to severe, causing discomfort and irritation.",
+        3: "Skin diseases like eczema and psoriasis can cause dry, flaky patches of skin, often accompanied by itching and inflammation.",
+        4: "Conditions such as psoriasis or seborrheic dermatitis can cause thick, scaly patches of skin or crusts to develop.",
+        5: "Skin diseases can cause changes in pigmentation, leading to areas of hyperpigmentation (darkening) or hypopigmentation (lightening) of the skin."
+    },
+    
+    precautions : {
+        1: "Practice good hygiene by washing your skin regularly with mild soap and water. Be gentle when cleansing to avoid irritating the skin.",
+        2: "Identify and avoid triggers or irritants that can exacerbate skin conditions, such as harsh soaps, detergents, perfumes, and certain fabrics.",
+        3: "Eat a balanced diet rich in fruits, vegetables, and whole grains to support overall skin health.",
+        4: "Refrain from scratching or picking at skin lesions, as this can lead to infections, scarring, and worsening of the condition.",
+        5: "Consult a dermatologist or healthcare provider if you notice any changes in your skin, such as new or worsening symptoms, persistent rashes or lesions, or signs of infection. "
+    },
+    
+    description : "Skin diseases encompass a wide range of conditions that affect the skin's structure, function, or appearance. These conditions can be temporary or chronic and may result from various factors such as genetics, immune system dysfunction, infections, allergies, environmental factors, or underlying medical conditions."
+};
+
+export const cataract = {
+    symptoms:{
+    1:"blurred or cloudy vision",
+    2:"increased difficulty seeing at night",
+    3:"frequent changes in eyeglass or contact lens prescription.",
+    4:"double vision in one eye"},
+precautions:{
+1:"maintaining a healthy diet rich in antioxidants",
+2:"controlling diabetes and other medical conditions, and getting regular eye exams.",
+3:"wearing sunglasses with UV protection"
+    },
+    description: "A cataract is a common eye condition that causes clouding of the eye's natural lens, leading to blurred vision."
+};
+

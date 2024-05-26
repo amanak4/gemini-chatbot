@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast';
+import { Context } from '../..';
 
 export default function CardThree({key,id,img,name,description,path}) {
+  
+  const {user, setUser,isAuthorized,setIsAuthorized}=useContext(Context);
+  const Munna=()=>{
+    
+  }
   return (
     <div className="w-[260px] rounded-2xl border">
       <img

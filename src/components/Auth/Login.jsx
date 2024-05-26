@@ -1,11 +1,16 @@
 import React, { useContext, useState } from 'react';
 import './style.css'; 
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { Context } from '../..';
 import { BASE_URL } from '../../Base_url';
 function Login() {
+
+
+  const {isAuthorized,setIsAuthorized,user,setUser}=useContext(Context);
+
+
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -32,39 +37,50 @@ const navigateTo = useNavigate();
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
+    if(!isAuthorized){
+      toast.error("The page is not yet connected to the backend. Please navigate to the homepage by changing the URL path.");
+      return ;
+      // navigateTo("/login");
+    }
     try {
       const response = await axios.post(`${BASE_URL}/signup`, formData,{
         withCredentials:true,
         headers: {
           "Content-Type": "application/json",
         },});
-      console.log(response.data);
+      console.log("response kdj",response);
+      setUser(response.data.user);
+      setIsAuthorized(true);
       toast.success(response.data.message);
       navigateTo('/')
     } catch (error) {
       console.error(error.response.data);
       toast.error(error.response.data.message);
-      // Handle error, display error message
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!isAuthorized){
+      toast.error("The page is not yet connected to the backend. Please navigate to the homepage by changing the URL path.");
+      return ;
+      // navigateTo("/login");
+    }
     try {
-      const response = await axios.post(`${BASE_URL}/login`, formData2,{
+      const {data} = await axios.post(`${BASE_URL}/login`, formData2,{
         withCredentials:true,
         headers: {
           "Content-Type": "application/json",
         },
-
       });
-      console.log(response.data);
-      toast.success(response.data.message);
+      console.log(data);
+      setUser(data.user);
+      setIsAuthorized(true);
+      toast.success(data.message);
       navigateTo('/');
     } catch (error) {
       console.error(error.response.data);
-      toast.error(error.response.data.message);
-      // Handle error, display error message
+      toast.error(error.response.message);
     }
   };
 
@@ -87,7 +103,7 @@ const navigateTo = useNavigate();
             <span>or use your email password</span>
             <input type="email" placeholder="Email" name="email" onChange={handleChange2} />
             <input type="password" placeholder="Password" name="password" onChange={handleChange2} />
-            <a href="#">Forget Your Password?</a>
+            <Link to={'/forgotPassword'}>Forget Your Password?</Link>
             <button type='submit'>Sign In</button>
           </form>
         </div>
